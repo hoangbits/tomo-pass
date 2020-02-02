@@ -13,6 +13,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
+    "styled-components": "^5.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -40,8 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^4.4.2",
     "autoprefixer": "^9.7.4",
     "postcss-cli": "^7.1.0",
+    "tailwind.macro": "^1.0.0-alpha.10",
     "tailwindcss": "^1.1.4"
   }
 }
