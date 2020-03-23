@@ -2,6 +2,7 @@
   "name": "tomo-pass",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://legiahoang.github.io/tomo-pass/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -21,11 +22,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:styles": "postcss src/tailwind.css -o src/index.css",
     "prebuild": "NODE_ENV=production npm run build:styles",
-    "prestart": "npm run build:styles"
+    "prestart": "npm run build:styles",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,6 +53,7 @@
     "@types/testing-library__jest-dom": "^5.0.0",
     "@types/testing-library__react": "^9.1.2",
     "autoprefixer": "^9.7.4",
+    "gh-pages": "^2.2.0",
     "postcss-cli": "^7.1.0",
     "tailwind.macro": "^1.0.0-alpha.10",
     "tailwindcss": "^1.1.4"
