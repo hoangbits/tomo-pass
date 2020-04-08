@@ -1,7 +1,7 @@
 import React from "react";
 import { Topbar } from "components";
 import styled from "styled-components";
-import zoltanImg from "images/zoltan.jpg";
+import tomatoImg from "images/tomato.jpeg";
 // import tw from "tailwind.macro";
 
 const AppStyles = styled.div.attrs({
@@ -13,7 +13,7 @@ const AppStyles = styled.div.attrs({
 
 const App: React.FC = () => {
   return (
-    <AppStyles url={zoltanImg}>
+    <AppStyles url={tomatoImg}>
       <Topbar />
     </AppStyles>
   );
