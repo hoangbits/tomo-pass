@@ -4,8 +4,11 @@ import styled from "styled-components";
 import tomatoImg from "images/tomato.jpeg";
 // import tw from "tailwind.macro";
 
+/**
+ * act as container fluid
+ */
 const AppStyles = styled.div.attrs({
-  className: "mx-auto"
+  className: "w-full"
 })<{ url: string }>`
   // background-image: ${props => `url(${props.url})`}
   background-color: #C55E5E;
@@ -14,7 +17,9 @@ const AppStyles = styled.div.attrs({
 const App: React.FC = () => {
   return (
     <AppStyles url={tomatoImg}>
-      <Topbar />
+      <div className="container mx-auto">
+        <Topbar />
+      </div>
     </AppStyles>
   );
 };
