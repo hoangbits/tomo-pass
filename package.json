@@ -3,6 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://legiahoang.github.io/tomo-pass",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:styles": "postcss src/tailwind.css -o src/index.css",
+    "prebuild": "NODE_ENV=production npm run build:styles",
+    "prestart": "npm run build:styles",
+    "predeploy": "npm run build"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -18,17 +29,6 @@
     "react-scripts": "3.3.0",
     "styled-components": "^5.0.0",
     "typescript": "~3.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:styles": "postcss src/tailwind.css -o src/index.css",
-    "prebuild": "NODE_ENV=production npm run build:styles",
-    "prestart": "npm run build:styles",
-    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
