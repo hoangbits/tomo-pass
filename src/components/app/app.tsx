@@ -18,7 +18,9 @@ const App: React.FC = () => {
   return (
     <AppStyles url={tomatoImg}>
       <div className="container mx-auto">
-        <Topbar />
+        <div className="grid grid-cols-12 gap-4">
+            <Topbar />
+        </div>
       </div>
     </AppStyles>
   );
