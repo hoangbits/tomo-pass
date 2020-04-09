@@ -22,13 +22,13 @@ const Topbar: React.FC = () => {
 
       <div
         className="col-span-12 text-center flex flex-col-reverse items-center
-      md:col-span-6 lg:flex-row"
+      md:col-span-6 lg:flex-row font-lacquer"
       >
         <SelectTomo>
           <option>Default Tomo</option>
           <option>others</option>
         </SelectTomo>
-        <button className="w-1/2 h-8 rounded-full text-red-600 bg-white">
+        <button className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer">
           Create Tomo
         </button>
       </div>

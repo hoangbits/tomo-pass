@@ -1,5 +1,5 @@
 import React from "react";
-import { Topbar } from "components";
+import { Topbar, MainControl, BottomControl } from "components";
 import styled from "styled-components";
 import tomatoImg from "images/tomato.jpeg";
 // import tw from "tailwind.macro";
@@ -19,7 +19,9 @@ const App: React.FC = () => {
     <AppStyles url={tomatoImg}>
       <div className="container mx-auto">
         <div className="grid grid-cols-12 gap-4">
-            <Topbar />
+          <Topbar />
+          <MainControl />
+          <BottomControl />
         </div>
       </div>
     </AppStyles>
