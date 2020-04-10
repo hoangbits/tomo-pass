@@ -9,7 +9,7 @@ const BottomControl: React.FC = () => {
       // Render a complete state
       return (
         <>
-          <span>Please take a break!</span>
+          <span className="text-white font-lacquer md:text-5xl">Please take a break!</span>
         </>
       );
     } else {
