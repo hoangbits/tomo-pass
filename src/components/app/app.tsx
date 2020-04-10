@@ -8,10 +8,9 @@ import tomatoImg from "images/tomato.jpeg";
  * act as container fluid
  */
 const AppStyles = styled.div.attrs({
-  className: "w-full"
+  className: "w-full h-screen bg-tomo"
 })<{ url: string }>`
-  // background-image: ${props => `url(${props.url})`}
-  background-color: #C55E5E;
+  // background-image: ${props => `url(${props.url})`}  
 `;
 
 const App: React.FC = () => {

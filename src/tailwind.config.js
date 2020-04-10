@@ -18,7 +18,7 @@ module.exports = {
       "3xl": "1.875rem",
       "4xl": "2.25rem",
       ..._.reduce(
-        new Array(6),
+        new Array(7),
         (accumulator, current, index) => {
           accumulator[`${index + 5}xl`] = `${index + 3}rem`;
           return accumulator;
@@ -29,6 +29,9 @@ module.exports = {
     extend: {
       borderRadius: {
         50: "50%"
+      },
+      colors: {
+        tomo: "#C55E5E"
       }
     }
   },

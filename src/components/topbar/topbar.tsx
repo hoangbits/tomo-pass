@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const SelectTomo = styled.select.attrs({
-  className: "w-1/2 ml-3 mr-4 h-8 rounded-full text-red-600 bg-white my-4",
+  className: "w-1/2 ml-3 mr-4 h-8 rounded-full text-red-600 bg-white my-4 md:text-2xl",
   id: "settings"
 })`
   text-align-last: center;
@@ -28,7 +28,7 @@ const Topbar: React.FC = () => {
           <option>Default Tomo</option>
           <option>others</option>
         </SelectTomo>
-        <button className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer">
+        <button className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer md:text-2xl">
           Create Tomo
         </button>
       </div>
