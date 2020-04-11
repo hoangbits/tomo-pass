@@ -2,7 +2,7 @@
   "name": "tomo-pass",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://legiahoang.github.io/tomo-pass",
+  "homepage": "https://tomopass.netlify.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
