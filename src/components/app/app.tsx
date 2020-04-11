@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Topbar, MainControl, BottomControl } from "components";
 import styled from "styled-components";
 import tomatoImg from "images/tomato.jpeg";
@@ -14,13 +14,17 @@ const AppStyles = styled.div.attrs({
 `;
 
 const App: React.FC = () => {
+  const [minutes, setMinutes] = useState(25);
+  const handleChangeMinutes = useCallback((minutes: number) => {
+    setMinutes(minutes);
+  }, []);
   return (
     <AppStyles url={tomatoImg}>
       <div className="container mx-auto">
         <div className="grid grid-cols-12 gap-4">
           <Topbar />
-          <MainControl />
-          <BottomControl />
+          <MainControl onChangeMinutes={handleChangeMinutes} />
+          <BottomControl minutes={minutes} />
         </div>
       </div>
     </AppStyles>

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
-const BottomControl: React.FC = () => {
+interface BottomControlProps {
+  minutes: number;
+}
+
+const BottomControl: React.FC<BottomControlProps> = ({ minutes }) => {
   // Renderer callback with condition
 
   const renderer = ({ minutes, seconds, completed }: any) => {
@@ -9,7 +13,9 @@ const BottomControl: React.FC = () => {
       // Render a complete state
       return (
         <>
-          <span className="text-white font-lacquer md:text-5xl">Please take a break!</span>
+          <span className="text-white font-lacquer md:text-5xl">
+            Please take a break!
+          </span>
         </>
       );
     } else {
@@ -25,7 +31,7 @@ const BottomControl: React.FC = () => {
   return (
     <>
       <div className="col-span-12 flex flex-col items-center">
-        <Countdown date={Date.now() + 1500000} renderer={renderer} />
+        <Countdown date={Date.now() + minutes * 60000} renderer={renderer} />
         <div className="rounded text-tomo bg-white md:mt-12">
           <h1 className="md:text-3xl font-lacquer">HOT KEY</h1>
           <ul className="list-disc list-inside  md:text-2xl font-lacquer">
