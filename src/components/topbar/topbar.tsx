@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Modal } from "../../utils";
 
 const SelectTomo = styled.select.attrs({
-  className: "w-1/2 ml-3 mr-4 h-8 rounded-full text-red-600 bg-white my-4 md:text-2xl",
+  className:
+    "w-1/2 ml-3 mr-4 h-8 rounded-full text-red-600 bg-white my-4 md:text-2xl",
   id: "settings"
 })`
   text-align-last: center;
 `;
 
 const Topbar: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const hideModal = () => setOpen(false);
+  const showModal = () => setOpen(true);
+
   return (
     <>
       <div className="text-center col-span-12  md:col-span-6">
@@ -28,9 +34,15 @@ const Topbar: React.FC = () => {
           <option>Default Tomo</option>
           <option>others</option>
         </SelectTomo>
-        <button className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer md:text-2xl">
+        <button
+          className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer md:text-2xl"
+          onClick={showModal}
+        >
           Create Tomo
         </button>
+        <Modal handleClose={hideModal} show={open}>
+            <p>from topbar</p>
+        </Modal>
       </div>
     </>
   );
