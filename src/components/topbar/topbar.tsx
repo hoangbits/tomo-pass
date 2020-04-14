@@ -38,10 +38,10 @@ const Topbar: React.FC = () => {
           className="w-1/2 h-8 rounded-full text-red-600 bg-white font-lacquer md:text-2xl"
           onClick={showModal}
         >
-          Create Tomo
+          Manage pomo
         </button>
-        <Modal handleClose={hideModal} show={open}>
-            <p>from topbar</p>
+        <Modal handleClose={hideModal} show={open} title="Manage pomo">
+          <p>from topbar</p>
         </Modal>
       </div>
     </>

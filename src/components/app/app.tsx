@@ -22,7 +22,7 @@ const App: React.FC = () => {
     <AppStyles url={tomatoImg}>
       <div className="container mx-auto">
         <div className="grid grid-cols-12 gap-4">
-          <Topbar />
+          <Topbar/>
           <MainControl onChangeMinutes={handleChangeMinutes} />
           <BottomControl minutes={minutes} />
         </div>
