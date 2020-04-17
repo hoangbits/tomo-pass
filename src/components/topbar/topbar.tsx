@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "../../utils";
+import {ManagePomo} from "components";
 
 const SelectTomo = styled.select.attrs({
   className:
@@ -41,7 +42,7 @@ const Topbar: React.FC = () => {
           Manage pomo
         </button>
         <Modal handleClose={hideModal} show={open} title="Manage pomo">
-          <p>from topbar</p>
+          <ManagePomo/>
         </Modal>
       </div>
     </>
