@@ -8,7 +8,7 @@ import tomatoImg from "images/tomato.jpeg";
  * act as container fluid
  */
 const AppStyles = styled.div.attrs({
-  className: "w-full h-screen bg-tomo"
+  className: "w-screen h-screen bg-tomo"
 })<{ url: string }>`
   // background-image: ${props => `url(${props.url})`}  
 `;
