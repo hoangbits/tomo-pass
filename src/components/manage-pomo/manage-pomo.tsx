@@ -25,32 +25,24 @@ const ManagePomo: React.FC<ManagePomoProps> = () => {
 
   const [rowData, setRowData] = useState([
     {
-      firstName: "Sadiq",
-      lastName: "Khan",
-      gender: "Male",
-      age: 12,
-      address:
-        "3235 High Forest, Glen Campbell, MS, 39035-6845, US, (601) 638-8186",
-      mood: "Happy",
-      country: "Ireland"
+      name: "default",
+      pomoMins: 25,
+      longBreakMins: 15,
+      shortBreakMins: 5
     },
     {
-      firstName: "Jerry",
-      lastName: "Mane",
-      gender: "Male",
-      age: 12,
-      address:
-        "2234 Sleepy Pony Mall , Drain, DC, 20078-4243, US, (202) 948-3634",
-      mood: "Happy",
-      country: "Ireland"
+      name: "custome1",
+      pomoMins: 25,
+      longBreakMins: 15,
+      shortBreakMins: 5
     },
-    {},
-    {},
-    {}
+    { name: "custome2", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 },
+    { name: "custome3", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 },
+    { name: "custome4", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 }
   ]);
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "firstName",
+      field: "name",
       onCellValueChanged: function(params: NewValueParams) {
         console.log("onCellValueChanged params", params);
         console.log("onCellValueChanged columnDefs", rowData);
@@ -61,15 +53,9 @@ const ManagePomo: React.FC<ManagePomoProps> = () => {
         return true;
       }
     },
-    { field: "lastName" },
-    { field: "gender" },
-    { field: "age" },
-    { field: "mood" },
-    { field: "country" },
-    {
-      field: "address",
-      minWidth: 550
-    }
+    { field: "pomoMins" },
+    { field: "longBreakMins" },
+    { field: "shortBreakMins" }
   ]);
   const [defaultColDef, setDefaultColDef] = useState({
     flex: 1,
@@ -81,24 +67,20 @@ const ManagePomo: React.FC<ManagePomoProps> = () => {
   function getPinnedTopData() {
     return [
       {
-        firstName: "##",
-        lastName: "##",
-        gender: "##",
-        address: "##",
-        mood: "##",
-        country: "##"
+        name: "##",
+        pomoMins: "##",
+        longBreakMins: "##",
+        shortBreakMins: "##"
       }
     ];
   }
   function getPinnedBottomData() {
     return [
       {
-        firstName: "##",
-        lastName: "##",
-        gender: "##",
-        address: "##",
-        mood: "##",
-        country: "##"
+        name: "##",
+        pomoMins: "##",
+        longBreakMins: "##",
+        shortBreakMins: "##"
       }
     ];
   }

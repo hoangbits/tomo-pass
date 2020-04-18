@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ handleClose, show, children ,title}) => {
   return (
     <div className={showHideClassName}>
       <div className="animated fadeIn fixed z-50 inset-0 overflow-auto bg-smoke-dark flex">
-        <div className="animated fadeInUp fixed shadow-inner max-w-md md:relative bottom-0 inset-x-0 align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow flex flex-col">
+        <div className="animated fadeInUp fixed shadow-inner md:max-w-screen-lg md:relative bottom-0 inset-x-0 align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow flex flex-col">
           <h2 className="text-4xl text-center font-hairline md:leading-loose text-grey md:mt-8 mb-4">
             {title}
           </h2>
