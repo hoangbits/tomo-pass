@@ -20,6 +20,7 @@ export const usePomoStore = () => {
       const pomos = JSON.parse(<string>localStorage.getItem(POMOS));
       store.initAllPomos(pomos);
     }
+    store.setCurrentPomo(store.pomos[0]);
   }
   return store;
 };

@@ -3,7 +3,7 @@ import { Pomo } from "../components/manage-pomo/";
 export function createPomoStore() {
   return {
     pomos: [] as Pomo[],
-    currentPomo: {},
+    currentPomo: {} as Pomo,
     initAllPomos(pomos?: Pomo[]) {
       if (pomos) {
         this.pomos = pomos;
@@ -48,8 +48,14 @@ export function createPomoStore() {
     setCurrentPomo(pomo: Pomo) {
       this.currentPomo = pomo;
     },
+    setCurrentPomoByName(name: string) {
+      this.currentPomo = <Pomo>this.allPomos.find(el => el.name === name);
+    },
     get isEmpty() {
       return this.pomos.length === 0;
+    },
+    get allPomos() {
+      return this.pomos;
     }
   };
 }

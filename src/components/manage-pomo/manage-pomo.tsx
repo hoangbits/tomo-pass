@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import {
   AgGridEvent,
@@ -12,34 +12,28 @@ import "@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css";
 import styled from "styled-components";
 import tw from "tailwind.macro";
 import { NewValueParams } from "@ag-grid-community/core/dist/es6/entities/colDef";
+import { RowNode } from "@ag-grid-community/core/dist/cjs/entities/rowNode";
+import { usePomoStore } from "../../hooks";
+import { POMOS } from "../../utils/constant";
 
 interface ManagePomoProps {}
+
+export interface Pomo {
+  name: string;
+  pomoMins: number;
+  longBreakMins: number;
+  shortBreakMins: number;
+}
 
 const StyledGrid = styled(AgGridReact)`
   ${tw`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
 `;
 
 const ManagePomo: React.FC<ManagePomoProps> = () => {
+  const pomoStore = usePomoStore(); // memoized by default
   const [gridApi, setGridApi] = useState<GridApi>();
   const [gridColumnApi, setGridColumnApi] = useState<ColumnApi>();
-
-  const [rowData, setRowData] = useState([
-    {
-      name: "default",
-      pomoMins: 25,
-      longBreakMins: 15,
-      shortBreakMins: 5
-    },
-    {
-      name: "custome1",
-      pomoMins: 25,
-      longBreakMins: 15,
-      shortBreakMins: 5
-    },
-    { name: "custome2", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 },
-    { name: "custome3", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 },
-    { name: "custome4", pomoMins: 25, longBreakMins: 15, shortBreakMins: 5 }
-  ]);
+  const [rowData, setRowData] = useState(pomoStore.pomos);
   const [columnDefs, setColumnDefs] = useState([
     {
       field: "name",
@@ -88,7 +82,6 @@ const ManagePomo: React.FC<ManagePomoProps> = () => {
   const onGridReady = (params: AgGridEvent) => {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
-    console.log("params", params);
   };
 
   const [gridOptions, setGridOptions] = useState({
@@ -101,8 +94,16 @@ const ManagePomo: React.FC<ManagePomoProps> = () => {
     onCellEditingStopped: function(event: CellEditingStoppedEvent) {
       console.log("cellEditingStopped", event);
       /**
-       * save all rows data to localStorage
+       * 1.save all rows data to localStorage
        */
+      let pomos: Array<Pomo> = [];
+      event.api.forEachNodeAfterFilterAndSort(
+        (rowNode: RowNode, index: number) => {
+          pomos.push(rowNode.data);
+        }
+      );
+      localStorage.setItem(POMOS, JSON.stringify(pomos));
+      pomoStore.updateAllPomos(pomos);
     }
   });
 
