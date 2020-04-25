@@ -11,6 +11,8 @@ import { ReactComponent as PauseSolid } from "images/zondicons/pause-solid.svg";
 import { ReactComponent as Play } from "images/zondicons/play.svg";
 import { ReactComponent as PlayOutline } from "images/zondicons/play-outline.svg";
 import { useAudio } from "../../hooks/useAudio";
+import { GlobalHotKeys, HotKeys } from "react-hotkeys";
+import { PomoProvider } from "../../providers/pomo-provider";
 interface BottomControlProps {
   minutes: number;
 }
@@ -47,6 +49,21 @@ const BottomControl: React.FC<BottomControlProps> = React.memo(
       return false;
     };
 
+    const switchMode = React.useCallback(() => {
+      console.log("allslslsl");
+      // logic here
+      if (isPaused()) {
+        // @ts-ignore
+        countDownRef.current.api?.start();
+      } else {
+        // @ts-ignore
+        countDownRef.current.api?.pause();
+      }
+    }, []);
+
+    const handlers = {
+      SWITCH: switchMode
+    };
     const renderer = ({ minutes, seconds, completed }: any) => {
       if (completed) {
         // Render a complete state
@@ -84,26 +101,27 @@ const BottomControl: React.FC<BottomControlProps> = React.memo(
     };
 
     return (
-      <>
-        <div className="col-span-12 flex flex-col items-center">
-          <Countdown
-            ref={countDownRef}
-            date={Date.now() + 5000}
-            renderer={renderer}
-            onComplete={() => {
-              // @ts-ignore
-              audio.play();
-            }}
-          />
-          <div className="rounded text-tomo bg-white md:mt-12">
-            <h1 className="md:text-3xl font-lacquer">HOT KEY</h1>
-            <ul className="list-disc list-inside  md:text-2xl font-lacquer">
-              <li> SPACE: pause/resume</li>
-              {/*<li> s: start selected Pomodoro</li>*/}
-            </ul>
+      <GlobalHotKeys handlers={handlers}>
+        <>
+          <div className="col-span-12 flex flex-col items-center">
+            <Countdown
+              ref={countDownRef}
+              date={Date.now() + minutes * 60000}
+              renderer={renderer}
+              onComplete={() => {
+                // @ts-ignore
+                audio.play();
+              }}
+            />
+            <div className="rounded text-tomo bg-white md:mt-12">
+              <h1 className="md:text-3xl font-lacquer">HOT KEY</h1>
+              <ul className="list-disc list-inside  md:text-2xl font-lacquer">
+                <li> SPACE: pause/resume</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </>
+        </>
+      </GlobalHotKeys>
     );
   }
 );

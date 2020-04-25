@@ -5,10 +5,18 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./components";
 import { PomoProvider } from "./providers/pomo-provider";
+import { GlobalHotKeys, HotKeys } from "react-hotkeys";
+
+const keyMap = {
+  SWITCH: ["space"]
+};
+
 const TomoPass: React.FC = () => (
   <BrowserRouter>
     <PomoProvider>
-      <App></App>
+      <GlobalHotKeys keyMap={keyMap}>
+        <App></App>
+      </GlobalHotKeys>
     </PomoProvider>
   </BrowserRouter>
 );
