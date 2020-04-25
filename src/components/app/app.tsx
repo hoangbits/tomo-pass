@@ -8,7 +8,7 @@ import tomatoImg from "images/tomato.jpeg";
  * act as container fluid
  */
 const AppStyles = styled.div.attrs({
-  className: "w-screen h-screen bg-tomo"
+  className: "w-screen h-full min-h-screen bg-tomo"
 })<{ url: string }>`
   // background-image: ${props => `url(${props.url})`}  
 `;
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     <AppStyles url={tomatoImg}>
       <div className="container h-full mx-auto">
         <div className="grid grid-cols-12 gap-4">
-          <Topbar/>
+          <Topbar />
           <MainControl onChangeMinutes={handleChangeMinutes} />
           <BottomControl minutes={minutes} />
         </div>
