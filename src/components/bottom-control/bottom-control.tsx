@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Countdown from "react-countdown";
 import { ReactComponent as Pause } from "images/zondicons/pause.svg";
 import { ReactComponent as PauseSolid } from "images/zondicons/pause-solid.svg";
@@ -17,13 +17,10 @@ const BottomControl: React.FC<BottomControlProps> = ({ minutes }) => {
   const [audio] = useState(
     new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3")
   );
-  let memoizedValue = useMemo(() => Date.now() + minutes * 60000, [minutes]);
+  const memoizedValue = useMemo(() => Date.now() + minutes * 60000, [minutes]);
   const pause = () => {
     countDownRef?.current?.api?.pause();
   };
-  useEffect(() => console.log("countDownRef chs", countDownRef), [
-    countDownRef
-  ]);
   const start = () => {
     countDownRef?.current?.api?.start();
   };
